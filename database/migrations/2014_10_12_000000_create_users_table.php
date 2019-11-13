@@ -18,6 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('address');
+            $table->string('post_code');
+            $table->string('phone_number');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -30,7 +33,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
 
-  
+
 
     public function down()
     {
