@@ -19,7 +19,7 @@ class DoctorsTableSeeder extends Seeder
       foreach ($role_user->users as $user) {
         $doctor = new Doctor();
 
-        $doctor->start_date = rand(1,20) ."-" . rand(1,12) . "-" . rand(1,31);
+        $doctor->start_date = '20' . rand(1,20) ."-" . rand(1,12) . "-" . rand(1,31);
         $doctor->expertise = "Surgeon";
         $doctor->user_id = $user->id;
 

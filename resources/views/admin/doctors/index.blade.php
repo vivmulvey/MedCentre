@@ -23,12 +23,20 @@
 
                         </thead>
                         <tbody>
+
+
                             @foreach ($doctors as $doctor)
-                            <tr data-id="{{ $doctor->id }}">
-                                <td>{{ $doctor->name}}</td>
-                                <td>{{ $doctor->email}}</td>
-                                <td>{{ $doctor->start_date}}</td>
-                                <td>{{ $doctor->expertise}}</td>
+                              @foreach ($doctors as $doctors)
+                             <tr data-id="{{ $doctor->id}}">
+                               <tr data-id="{{ $role_doctors->id}}">
+
+
+                              <td>{{ $doctors->name}}</td>
+                              <td>{{ $doctors->email}}</td>
+
+                              <td>{{ $doctor->start_date}}</td>
+                              <td>{{ $doctor->expertise}}</td>
+
 
                                 <td>
                                     <a href="{{ route('admin.doctors.show', $doctor->id) }}" class="btn btn-default ">View</a>
@@ -40,17 +48,20 @@
                                     </form>
                                 </td>
                             </tr>
+                          </tr>
+
 
 
 
                             @endforeach
+                              @endforeach
                         </tbody>
                     </table>
 
                     @endif
 
                     <a href="{{ route('admin.home')}}" class="btn btn-link">Back</a>
-                    
+
                 </div>
             </div>
         </div>

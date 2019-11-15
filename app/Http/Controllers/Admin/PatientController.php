@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Doctor;
+use App\Patient;
 use App\Role;
+use App\InsuranceCompany;
 
-class DoctorController extends Controller
+class PatientController extends Controller
 {
   public function __construct()
   {
@@ -22,12 +23,12 @@ class DoctorController extends Controller
    */
   public function index()
   {
-      $doctors = Doctor::all(); //get all doctors from database and put it in $doctors
-      $user_role = Role::all()->where('name', 'doctor')->first();
+      $patients = Patient::all(); //get all patients from database and put it in $patients
+      // $user_role = Role::all()->where('name', 'doctor')->first();
 
-      return view('admin.doctors.index')->with([
-        'doctors' => $doctors,
-        'role_doctors' => $user_role
+      return view('admin.patients.index')->with([
+        'patients' => $patients,
+        // 'role_doctors' => $user_role
       ]);
   }
 
@@ -39,10 +40,10 @@ class DoctorController extends Controller
   public function create()
   {
 
-      // $publishers = Publisher::all();
+       $insurance_companys = InsuranceCompany::all();
 
-      return view('admin.doctors.create')->with([
-      //   'publishers' => $publishers
+      return view('admin.patients.create')->with([
+         'insurance_companys' => $insurance_companys
       ]);
   }
 
@@ -58,21 +59,21 @@ class DoctorController extends Controller
       [
         'name' => 'required|max:191',
         'email' => 'required|max:191',
-        'start_date' => 'required|date|max:8',
-        'expertise' => 'required|max:191',
+        'insurance_company_id' => 'required|max:191',
+        'policy_number' => 'required|max:13',
 
       ]);
 
-      $doctor = new Doctor();
-      $doctor->name = $request->input('name');
-      $doctor->email = $request->input('email');
-      $doctor->start_date = $request->input('start_date');
-      $doctor->expertise = $request->input('expertise');
+      $patient = new Patient();
+      $patient->name = $request->input('name');
+      $patient->email = $request->input('email');
+      $patient->insurance_company_id = $request->input('insurance_company_id');
+      $patient->policy_number = $request->input('policy_number');
 
 
-      $doctor->save();
+      $patient->save();
 
-      return redirect()->route('admin.doctors.index');
+      return redirect()->route('admin.patients.index');
 
   }
 
@@ -85,11 +86,11 @@ class DoctorController extends Controller
    */
   public function show($id)
   {
-      $doctor = Doctor::findOrFail($id);
+      $patient = Patient::findOrFail($id);
       //$reviews = $book->reviews()->get();
 
-      return view('admin.doctors.show')->with([
-        'doctor' => $doctor,
+      return view('admin.dpatient.show')->with([
+        'patient' => $patient,
         //'reviews' => $reviews
       ]);
   }
@@ -103,13 +104,13 @@ class DoctorController extends Controller
 //    */
   public function edit($id)
   {
-      //$publishers = Publisher::all();
-      $doctor = Doctor::findOrFail($id);
+      $insurance_companys = InsuranceCompany::all();
+      $patient = Patient::findOrFail($id);
 
 
-      return view('admin.doctors.edit')->with([
-        'doctor' => $doctor,
-        //'publishers' => $publishers
+      return view('admin.patients.edit')->with([
+        'patient' => $patient,
+        'insurance_companys' => $insurance_companys
       ]);
   }
 
@@ -125,27 +126,27 @@ class DoctorController extends Controller
   public function update(Request $request, $id)
   {
 
-    $doctor = Doctor::findOrFail($id);
+    $patient = Patient::findOrFail($id);
 
     $request->validate(
     [
       // 'name' => 'required|max:191',
       // 'email' => 'required|max:191',
-      'start_date' => 'required|date|max:10',
-      'expertise' => 'required|max:191',
+      'insurance_company_id' => 'required|max:191',
+      'policy_number' => 'required|max:13',
       //'isbn' => 'required|alpha_num|size:13|unique:books,isbn,'.$book->id, //input new isbn , ignore current book isbn
 
     ]);
 
     // $doctor->name = $request->input('name');
     // $doctor->email = $request->input('email');
-    $doctor->start_date = $request->input('start_date');
-    $doctor->expertise = $request->input('expertise');
+    $patient->insurance_company_id = $request->input('insurance_company_id');
+    $patient->policy_number = $request->input('policy_number');
 
 
-    $doctor->save();
+    $patient->save();
 
-    return redirect()->route('admin.doctors.index');
+    return redirect()->route('admin.patients.index');
 
 
     }
@@ -159,11 +160,11 @@ class DoctorController extends Controller
    */
   public function destroy($id)
   {
-    $doctor = Doctor::findOrFail($id);
+    $patient = Patient::findOrFail($id);
 
-    $doctor->delete();
+    $patient->delete();
 
-    return redirect()->route('admin.doctors.index');
+    return redirect()->route('admin.patients.index');
 
   }
 }
