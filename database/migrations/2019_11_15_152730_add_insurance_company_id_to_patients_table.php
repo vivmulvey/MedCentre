@@ -18,7 +18,7 @@ class AddInsuranceCompanyIdToPatientsTable extends Migration
           $table->dropColumn('insurance_company');
           $table->bigInteger('insurance_company_id')->unsigned();
 
-          $table->foreign('insurance_company_id')->references('id')->on('insurance_company');
+          $table->foreign('insurance_company_id')->references('id')->on('insurance_companies');
       });
     }
 
@@ -30,7 +30,7 @@ class AddInsuranceCompanyIdToPatientsTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-          $table->dropForeign('insurance_company_id');
+          $table->dropForeign(['insurance_company_id']);
           $table->dropColumn('insurance_company_id');
 
           $table->string('insurance_company');

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\InsuranceCompany;
 
-class InsuranceCompanysTableSeeder extends Seeder
+class InsuranceCompaniesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -34,5 +35,9 @@ class InsuranceCompanysTableSeeder extends Seeder
       $insurance_company->phone_number = "012569905";
       $insurance_company->email = "irishhealthinsurance@ihi.ie";
       $insurance_company->save();
+
+      public function run(){
+        factory(App\InsuranceComapny::class,15)->create();
+      }
     }
 }

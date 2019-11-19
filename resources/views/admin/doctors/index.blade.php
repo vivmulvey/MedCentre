@@ -26,13 +26,13 @@
 
 
                             @foreach ($doctors as $doctor)
-                              @foreach ($doctors as $doctors)
+                              
                              <tr data-id="{{ $doctor->id}}">
-                               <tr data-id="{{ $role_doctors->id}}">
 
 
-                              <td>{{ $doctors->name}}</td>
-                              <td>{{ $doctors->email}}</td>
+
+                              <td>{{ $doctor->user->name}}</td>
+                              <td>{{ $doctor->user->email}}</td>
 
                               <td>{{ $doctor->start_date}}</td>
                               <td>{{ $doctor->expertise}}</td>
@@ -48,12 +48,12 @@
                                     </form>
                                 </td>
                             </tr>
-                          </tr>
 
 
 
 
-                            @endforeach
+
+
                               @endforeach
                         </tbody>
                     </table>

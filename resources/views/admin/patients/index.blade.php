@@ -31,10 +31,10 @@
 
 
 
-                              <td>{{ $patient->policy_number}}</td>
-                              <td>{{ $patient->policy_number}}</td>
+                              <td>{{ $patient->user->name}}</td>
+                              <td>{{ $patient->user->email}}</td>
 
-                              <td>{{ $patient->insurance_company->name}}</td>
+                              <td>{{ $patient->insurance_company}}</td>
                               <td>{{ $patient->policy_number}}</td>
 
 

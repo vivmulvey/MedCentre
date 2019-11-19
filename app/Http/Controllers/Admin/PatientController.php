@@ -24,11 +24,11 @@ class PatientController extends Controller
   public function index()
   {
       $patients = Patient::all(); //get all patients from database and put it in $patients
-      // $user_role = Role::all()->where('name', 'doctor')->first();
+      $user_role = Role::all()->where('name', 'doctor')->first();
 
       return view('admin.patients.index')->with([
         'patients' => $patients,
-        // 'role_doctors' => $user_role
+        'role_patients' => $user_role
       ]);
   }
 
@@ -40,10 +40,10 @@ class PatientController extends Controller
   public function create()
   {
 
-       $insurance_companys = InsuranceCompany::all();
+       $insurance_companies = InsuranceCompany::all();
 
       return view('admin.patients.create')->with([
-         'insurance_companys' => $insurance_companys
+         'insurance_companies' => $insurance_companies
       ]);
   }
 
@@ -104,13 +104,13 @@ class PatientController extends Controller
 //    */
   public function edit($id)
   {
-      $insurance_companys = InsuranceCompany::all();
+      $insurance_companies = InsuranceCompany::all();
       $patient = Patient::findOrFail($id);
 
 
       return view('admin.patients.edit')->with([
         'patient' => $patient,
-        'insurance_companys' => $insurance_companys
+        'insurance_companies' => $insurance_companies
       ]);
   }
 
