@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Role;
+use App\User;
 use App\InsuranceCompany;
+
 
 class PatientController extends Controller
 {
@@ -40,10 +42,10 @@ class PatientController extends Controller
   public function create()
   {
 
-       $insurance_companies = InsuranceCompany::all();
+      $insurance_companies = InsuranceCompany::all();
 
       return view('admin.patients.create')->with([
-         'insurance_companies' => $insurance_companies
+         'insurance_companies' => $insurance_companies,
       ]);
   }
 
@@ -55,20 +57,38 @@ class PatientController extends Controller
    */
   public function store(Request $request)
   {
+
+    $role_patient = Role::where('name' , 'patient')->first();
+
       $request->validate(
       [
         'name' => 'required|max:191',
         'email' => 'required|max:191',
+        'address' => 'required|max:191',
+        'post_code' => 'required|max:13',
+        'phone_number' => 'required|max:13',
         'insurance_company_id' => 'required|max:191',
         'policy_number' => 'required|max:13',
 
       ]);
 
+      $user = new User();
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
+      $user->address = $request->input('address');
+      $user->post_code = $request->input('post_code');
+      $user->phone_number = $request->input('phone_number');
+      $user->password = bcrypt('secret');
+
+
+      $user->save();
+      $user->roles()->attach($role_patient);
+
       $patient = new Patient();
-      $patient->name = $request->input('name');
-      $patient->email = $request->input('email');
       $patient->insurance_company_id = $request->input('insurance_company_id');
       $patient->policy_number = $request->input('policy_number');
+      $patient->user_id = $request->input('user_id');
+      $patient->user_id =  $user->id;
 
 
       $patient->save();
@@ -87,11 +107,11 @@ class PatientController extends Controller
   public function show($id)
   {
       $patient = Patient::findOrFail($id);
-      //$reviews = $book->reviews()->get();
 
-      return view('admin.dpatient.show')->with([
+
+      return view('admin.patients.show')->with([
         'patient' => $patient,
-        //'reviews' => $reviews
+
       ]);
   }
 
@@ -104,13 +124,13 @@ class PatientController extends Controller
 //    */
   public function edit($id)
   {
-      $insurance_companies = InsuranceCompany::all();
+
       $patient = Patient::findOrFail($id);
 
 
       return view('admin.patients.edit')->with([
         'patient' => $patient,
-        'insurance_companies' => $insurance_companies
+
       ]);
   }
 
@@ -127,19 +147,21 @@ class PatientController extends Controller
   {
 
     $patient = Patient::findOrFail($id);
+    $user = User::findOrFail($patient->user_id);
 
     $request->validate(
     [
-      // 'name' => 'required|max:191',
-      // 'email' => 'required|max:191',
+      'name' => 'required|max:191',
+      'email' => 'required|max:191',
       'insurance_company_id' => 'required|max:191',
       'policy_number' => 'required|max:13',
-      //'isbn' => 'required|alpha_num|size:13|unique:books,isbn,'.$book->id, //input new isbn , ignore current book isbn
+
 
     ]);
 
-    // $doctor->name = $request->input('name');
-    // $doctor->email = $request->input('email');
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->save();
     $patient->insurance_company_id = $request->input('insurance_company_id');
     $patient->policy_number = $request->input('policy_number');
 
@@ -160,9 +182,9 @@ class PatientController extends Controller
    */
   public function destroy($id)
   {
-    $patient = Patient::findOrFail($id);
+    $user = User::findOrFail($id);
 
-    $patient->delete();
+    $user->delete();
 
     return redirect()->route('admin.patients.index');
 

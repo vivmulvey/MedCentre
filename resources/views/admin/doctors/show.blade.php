@@ -7,21 +7,21 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
-                    Doctor: {{$doctor->expertise}}
+                    Doctor: {{$doctor->user->name}}
                 </div>
 
                 <div class="card-body">
 
                     <table class="table table-hover">
                         <tbody>
-                            {{-- <tr>
-                                <td>Name</td>
-                                <td>{{ $book->title }}</td>
-                            </tr> --}}
-                            {{-- <tr>
-                                <td>Email</td>
-                                <td>{{ $book->author }}</td>
-                            </tr> --}}
+                          <tr>
+                              <td>Name</td>
+                              <td>{{ $doctor->user->name }}</td>
+                          </tr>
+                          <tr>
+                              <td>Email</td>
+                              <td>{{$doctor->user->email }}</td>
+                          </tr>
                             <tr>
                                 <td>Start Date</td>
                                 <td>{{ $doctor->start_date }}</td>

@@ -22,23 +22,15 @@
                     <form method="POST" action="{{ route('admin.patients.update', $patient->id )}}">
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="title">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old("name", $??->name)}}" />
+                            <input type="text" class="form-control" id="name" name="name" value="{{old("name", $patient->user->name)}}" />
                         </div>
                         <div class="form-group">
                             <label for="title">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" value="{{old("email", $??->email)}}" />
-                        </div> --}}
-                        {{-- <div class="form-group">
-                            <label for="title">Publisher</label>
-                            <select name="publisher_id">
-                              @foreach ($publishers as $publisher)
-                                <option value="{{$publisher->id}}" {{(old('publisher_id', $book->publisher->id) == $publisher->id) ? "selected" : ""}}>
-                                  {{$publisher->name}}
-                                </option>
-                              @endforeach
-                        </div> --}}
+                            <input type="text" class="form-control" id="email" name="email" value="{{old("email", $patient->user->email)}}" />
+                        </div>
+
                         <div class="form-group">
                             <label for="title">Insurance Company ID</label>
                             <input type="text" class="form-control" id="insurance_company_id" name="insurance_company_id" value="{{old("insurance_company_id", $patient->insurance_company_id)}}" />

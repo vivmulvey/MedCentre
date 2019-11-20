@@ -21,23 +21,26 @@
             @endif
             <form method="POST" action="{{ route('admin.patients.store')}}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              {{-- <div class="form-group">
+              <div class="form-group">
                   <label for="title">Name</label>
                   <input type="text" class="form-control" id="name" name="name" value="{{old("name")}}" />
               </div>
               <div class="form-group">
                   <label for="title">Email</label>
                   <input type="text" class="form-control" id="email" name="email" value="{{old("email")}}" />
-              </div> --}}
-              {{-- <div class="form-group">
-                  <label for="title">Publisher</label>
-                  <select name="publisher_id">
-                    @foreach ($publishers as $publisher)
-                      <option value="{{$publisher->id}}" {{(old('publisher_id', $book->publisher->id) == $publisher->id) ? "selected" : ""}}>
-                        {{$publisher->name}}
-                      </option>
-                    @endforeach
-              </div> --}}
+              </div>
+              <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" id="address" name="address" value="{{old("address")}}" />
+              </div>
+              <div class="form-group">
+                  <label for="title">Postcode</label>
+                  <input type="text" class="form-control" id="post_code" name="post_code" value="{{old("post_code")}}" />
+              </div>
+              <div class="form-group">
+                  <label for="title">Phone Number</label>
+                  <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{old("phone_number")}}" />
+              </div>
               <div class="form-group">
                   <label for="title">Insurance Company ID</label>
                   <select name= "insurance_company_id">

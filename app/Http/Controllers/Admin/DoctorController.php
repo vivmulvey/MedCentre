@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Doctor;
 use App\Role;
+use App\User;
 
 class DoctorController extends Controller
 {
@@ -53,21 +54,44 @@ class DoctorController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request)
+
+
   {
+
+    $role_doctor = Role::where('name' , 'doctor')->first();
+
       $request->validate(
       [
         'name' => 'required|max:191',
         'email' => 'required|max:191',
-        'start_date' => 'required|date|max:8',
+        'address' => 'required|max:191',
+        'post_code' => 'required|max:13',
+        'phone_number' => 'required|max:13',
+        'start_date' => 'required|date|max:10',
         'expertise' => 'required|max:191',
 
       ]);
 
+      $user = new User();
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
+      $user->address = $request->input('address');
+      $user->post_code = $request->input('post_code');
+      $user->phone_number = $request->input('phone_number');
+      $user->password = bcrypt('secret');
+      $user->save();
+      $user->roles()->attach($role_doctor);
+
+
+
+
+
       $doctor = new Doctor();
-      $doctor->name = $request->input('name');
-      $doctor->email = $request->input('email');
+
       $doctor->start_date = $request->input('start_date');
       $doctor->expertise = $request->input('expertise');
+      $doctor->user_id = $request->input('user_id');
+      $doctor->user_id =  $user->id;
 
 
       $doctor->save();
@@ -90,7 +114,7 @@ class DoctorController extends Controller
 
       return view('admin.doctors.show')->with([
         'doctor' => $doctor,
-        //'reviews' => $reviews
+
       ]);
   }
 
@@ -103,13 +127,13 @@ class DoctorController extends Controller
 //    */
   public function edit($id)
   {
-      //$publishers = Publisher::all();
+
       $doctor = Doctor::findOrFail($id);
 
 
       return view('admin.doctors.edit')->with([
         'doctor' => $doctor,
-        //'publishers' => $publishers
+
       ]);
   }
 
@@ -127,18 +151,21 @@ class DoctorController extends Controller
 
     $doctor = Doctor::findOrFail($id);
 
+    $user = User::findOrFail($doctor->user_id);
+
     $request->validate(
     [
-      // 'name' => 'required|max:191',
-      // 'email' => 'required|max:191',
+      'name' => 'required|max:191',
+      'email' => 'required|max:191',
       'start_date' => 'required|date|max:10',
       'expertise' => 'required|max:191',
-      //'isbn' => 'required|alpha_num|size:13|unique:books,isbn,'.$book->id, //input new isbn , ignore current book isbn
+      
 
     ]);
 
-    // $doctor->name = $request->input('name');
-    // $doctor->email = $request->input('email');
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->save();
     $doctor->start_date = $request->input('start_date');
     $doctor->expertise = $request->input('expertise');
 
@@ -159,9 +186,9 @@ class DoctorController extends Controller
    */
   public function destroy($id)
   {
-    $doctor = Doctor::findOrFail($id);
+    $user = User::findOrFail($id);
 
-    $doctor->delete();
+    $user->delete();
 
     return redirect()->route('admin.doctors.index');
 

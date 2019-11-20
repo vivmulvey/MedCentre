@@ -89,6 +89,8 @@ class UsersTableSeeder extends Seeder
 
 
 
+      //Creating Patients
+
        $this->amountOfInsuranceCompanies = InsuranceCompany::count();
 
        factory(App\User::class, 20)->create()->each(function($user){
@@ -100,9 +102,7 @@ class UsersTableSeeder extends Seeder
            ]);
          });
 
-
-
-
+       //Creating Doctors
 
 
       factory(App\User::class, 20)->create()->each(function($user){

@@ -26,7 +26,7 @@
 
 
                             @foreach ($doctors as $doctor)
-                              
+
                              <tr data-id="{{ $doctor->id}}">
 
 
@@ -41,7 +41,7 @@
                                 <td>
                                     <a href="{{ route('admin.doctors.show', $doctor->id) }}" class="btn btn-default ">View</a>
                                     <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="btn btn-warning ">Edit</a>
-                                    <form style="display:inline-block" method="POST" action="{{route('admin.doctors.destroy', $doctor->id)}}">
+                                    <form style="display:inline-block" method="POST" action="{{route('admin.doctors.destroy', $doctor->user->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="form-control btn btn-danger ">Delete</a>

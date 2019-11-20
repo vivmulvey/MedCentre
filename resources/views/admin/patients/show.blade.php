@@ -7,24 +7,24 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
-                    Patient: {{$patient->policy_number}}
+                    Patient: {{$patient->user->name}}
                 </div>
 
                 <div class="card-body">
 
                     <table class="table table-hover">
                         <tbody>
-                            {{-- <tr>
+                           <tr>
                                 <td>Name</td>
-                                <td>{{ $book->title }}</td>
-                            </tr> --}}
-                            {{-- <tr>
+                                <td>{{ $patient->user->name }}</td>
+                            </tr>
+                             <tr>
                                 <td>Email</td>
-                                <td>{{ $book->author }}</td>
-                            </tr> --}}
+                                <td>{{ $patient->user->email }}</td>
+                            </tr>
                             <tr>
                                 <td>Insurance Policy ID</td>
-                                <td>{{ $patient->insurance_company }}</td>
+                                <td>{{ $patient->insurance_company->id }}</td>
                             </tr>
                             <tr>
                                 <td>Policy Number</td>
