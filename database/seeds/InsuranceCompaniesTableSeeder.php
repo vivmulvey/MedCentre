@@ -36,8 +36,8 @@ class InsuranceCompaniesTableSeeder extends Seeder
       $insurance_company->email = "irishhealthinsurance@ihi.ie";
       $insurance_company->save();
 
-      public function run(){
-        factory(App\InsuranceComapny::class,15)->create();
-      }
+      
+        factory(App\InsuranceCompany::class,15)->create();
+
     }
 }

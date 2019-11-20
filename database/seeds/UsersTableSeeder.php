@@ -5,9 +5,12 @@ use App\User;
 use App\Role;
 use App\Doctor;
 use App\Patient;
+use App\InsuranceCompany;
 
 class UsersTableSeeder extends Seeder
 {
+
+  private $amountOfInsuranceCompanies = 0;
     /**
      * Run the database seeds.
      *
@@ -84,36 +87,30 @@ class UsersTableSeeder extends Seeder
       $patient->save();
       $patient->roles()->attach($role_patient);
 
-      //$patientData = new Patient();
-      //$patientData->policy_number =
-      // $patientData->insurance_company_id =
-      // $patientData->user_id = $patient->id;
-    //  $patientData->save();
+
+
+       $this->amountOfInsuranceCompanies = InsuranceCompany::count();
+
+       factory(App\User::class, 20)->create()->each(function($user){
+         $user->roles()->attach(Role::where('name' , 'patient')->first());
+
+         factory(App\Patient::class)->create([
+           'user_id' => $user->id,
+           'insurance_company_id' => function() { return mt_rand(1, $this->amountOfInsuranceCompanies); }
+           ]);
+         });
 
 
 
 
-
-
-      // factory(App\User::class, 20)->create()->each(function($user){
-      //   $user->roles()->attach(Role::where('name' , 'patient')->first());
-      //
-      //   $patientData = new Patient();
-      //   $patientData->policy_number = ''
-      //   $patientData->insurance_company_id = function() { return mt_rand(1, $this->amountOfPublishers); }
-      //   $patientData->user_id = $user->id;
-      //   $patientData->save();
-      // });
 
 
       factory(App\User::class, 20)->create()->each(function($user){
         $user->roles()->attach(Role::where('name' , 'doctor')->first());
 
-         $doctorData = new Doctor();
-         $doctorData->start_date = '';
-         $doctorData->expertise = '';
-         $doctorData->user_id = $user->id;
-         $doctorData->save();
+         factory(App\Doctor::class)->create([
+           'user_id' => $user->id
+         ]);
 
       });
     }
