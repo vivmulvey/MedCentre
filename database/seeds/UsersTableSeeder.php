@@ -66,26 +66,39 @@ class UsersTableSeeder extends Seeder
       $user->roles()->attach($role_user);
 
       //User Model - Doctor
-      $doctor = new User();
-      $doctor->name = 'Sam Kenny';
-      $doctor->email = 'skenny@medicalcentre.ie';
-      $doctor->address = ('78 Bakers Road , Deansgrange');
-      $doctor->post_code = ('A996T5H8');
-      $doctor->phone_number = ('0876182463');
-      $doctor->password = bcrypt('secret');
+      $user = new User();
+      $user->name = 'Sam Kenny';
+      $user->email = 'skenny@medicalcentre.ie';
+      $user->address = ('78 Bakers Road , Deansgrange');
+      $user->post_code = ('A996T5H8');
+      $user->phone_number = ('0876182463');
+      $user->password = bcrypt('secret');
+      $user->save();
+      $user->roles()->attach($role_doctor);
+
+      $doctor = new Doctor();
+      $doctor->user_id = $user->id;
+      $doctor->start_date = '2000/06/06';
+      $doctor->expertise = 'Surgeon';
       $doctor->save();
-      $doctor->roles()->attach($role_doctor);
+
 
       //User Model - Patient
-      $patient = new User();
-      $patient->name = 'Laura Glynn';
-      $patient->email = 'lglynn@medicalcentre.ie';
-      $patient->address = ('90 Olivers Way , Blackrock');
-      $patient->post_code = ('A94C2W6');
-      $patient->phone_number = ('0864428756');
-      $patient->password = bcrypt('secret');
+      $user = new User();
+      $user->name = 'Laura Glynn';
+      $user->email = 'lglynn@medicalcentre.ie';
+      $user->address = ('90 Olivers Way , Blackrock');
+      $user->post_code = ('A94C2W6');
+      $user->phone_number = ('0864428756');
+      $user->password = bcrypt('secret');
+      $user->save();
+      $user->roles()->attach($role_patient);
+
+      $patient = new Patient();
+      $patient->user_id = $user->id;
+      $patient->policy_number = '7292518629009';
+      $patient->insurance_company_id = '1';
       $patient->save();
-      $patient->roles()->attach($role_patient);
 
 
 

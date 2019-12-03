@@ -22,8 +22,9 @@
                     You are logged in as a patient!
 
                     </br>
+                    <a href="{{ route('patient.visits.index')}}" class="btn btn-primary float-right">View Visits</a>
 
-                    Insurance Policy Number: {{Auth::user()->patient->policy_number}}
+                    {{-- Insurance Policy Number: {{Auth::user()->patient->policy_number}} --}}
 
                 </div>
             </div>

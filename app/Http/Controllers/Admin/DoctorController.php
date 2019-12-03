@@ -54,9 +54,9 @@ class DoctorController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request)
-
-
   {
+
+    // dd($request->input('expertise'));
 
     $role_doctor = Role::where('name' , 'doctor')->first();
 
@@ -159,7 +159,7 @@ class DoctorController extends Controller
       'email' => 'required|max:191',
       'start_date' => 'required|date|max:10',
       'expertise' => 'required|max:191',
-      
+
 
     ]);
 

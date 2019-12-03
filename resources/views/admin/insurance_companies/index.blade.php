@@ -7,39 +7,38 @@
         <div class="col-md-12 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
-                    Doctors
+                    Insurance Companies
                     <a href="{{ route('admin.doctors.create')}}" class="btn btn-primary float-right">Add</a>
                 </div>
                 <div class="card-body">
-                    @if (count($doctors) === 0)
-                    <p>There are no doctors</p>
+                    @if (count($insurance_companies) === 0)
+                    <p>There are no insurance companies</p>
                     @else
-                    <table id="table-doctors" class="table table-hover">
+                    <table id="table-insurance_companies" class="table table-hover">
                         <thead>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Start Date</th>
-                            <th>Expertise</th>
+
 
                         </thead>
                         <tbody>
 
 
-                            @foreach ($doctors as $doctor)
+                            @foreach ($insurance_companies as $insurance_company)
 
-                             <tr data-id="{{ $doctor->id}}">
+                             <tr data-id="{{ $insurance_company->id}}">
 
 
+                              <td>{{ $insurance_company->id}}</td>
+                              <td>{{ $insurance_company->name}}</td>
+                              <td>{{ $insurance_company->email}}</td>
 
-                              <td>{{ $doctor->user->name}}</td>
-                              <td>{{ $doctor->user->email}}</td>
 
-                              <td>{{ $doctor->start_date}}</td>
-                              <td>{{ $doctor->expertise}}</td>
 
 
                                 <td>
-                                    <a href="{{ route('admin.doctors.show', $doctor->id) }}" class="btn btn-default ">View</a>
+                                    <a href="{{ route('admin.insurance_companies.show', $insurance_company->id) }}" class="btn btn-default ">View</a>
                                     {{-- <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="btn btn-warning ">Edit</a>
                                     <form style="display:inline-block" method="POST" action="{{route('admin.doctors.destroy', $doctor->user->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">

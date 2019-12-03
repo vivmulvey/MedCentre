@@ -21,8 +21,9 @@
                       You are logged in as a doctor!
 
                   </br>
+                  <a href="{{ route('doctor.visits.index')}}" class="btn btn-primary float-right">View Visits</a>
 
-                  Expertise: {{Auth::user()->doctor->expertise}}
+                  {{-- Expertise: {{Auth::user()->doctor->expertise}} --}}
 
 
 

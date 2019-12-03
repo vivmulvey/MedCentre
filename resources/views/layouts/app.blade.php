@@ -35,9 +35,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li><a href='/'>Doctors</a></li>
-                        <li><a href='/'>Patients</a></li>
-                        <li><a href='/'>Visits</a></li>
+                        @if(Auth::user() && Auth::user()->hasRole('admin'))
+                          <a href="{{ route('admin.doctors.index')}}" class="btn btn-default float-right">Doctors</a>
+                          <a href="{{ route('admin.patients.index')}}" class="btn btn-default float-right">Patients</a>
+                          <a href="{{ route('admin.visits.index')}}" class="btn btn-default float-right">Visits</a>
+                          <a href="{{ route('admin.insurance_companies.index')}}" class="btn btn-default float-right">Insurance Companies</a>
+                        @elseif(Auth::user() && Auth::user()->hasRole('doctor'))
+                          <a href="{{ route('doctor.patients.index')}}" class="btn btn-default float-right">View Patients</a>
+                          <a href="{{ route('doctor.visits.index')}}" class="btn btn-default float-right">View Visits</a>
+                        @elseif(Auth::user() && Auth::user()->hasRole('patient'))
+                          <a href="{{ route('patient.visits.index')}}" class="btn btn-default float-right">View Visits</a>
+                        @endif
 
                     </ul>
 

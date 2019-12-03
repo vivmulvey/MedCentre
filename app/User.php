@@ -52,6 +52,8 @@ class User extends Authenticatable
     }
 
 
+
+
     public function authorizeRoles($roles)  //checks what role they have
     {
       if(is_array($roles)){

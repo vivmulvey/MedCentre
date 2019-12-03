@@ -46,12 +46,22 @@
                   <input type="date" class="form-control" id="start_date" name="start_date" value="{{old("start_date")}}" />
               </div>
               <div class="form-group">
-                  <label for="title">Expertise</label>
-                  <input type="text" class="form-control" id="expertise" name="expertise" value="{{old("expertise")}}" />
+                  <label for="expertise">Expertise</label>
+                </br>
+                  <select id="expertise" name="expertise">
+                      <option value="Surgeon">Surgeon</option>
+                      <option value="Nurse"> Nurse</option>
+                      <option value="Anesthesiologist">Anesthesiologist</option>
+                      <option value="General Practician">General Practician</option>
+                      <option value="Physician">Physician</option>
+                      <option value="Pathologist">Pathologist</option>
+                      <option value="Orthopedic">Orthopedic</option>
+                      <option value="Radiologist">Radiologist</option>
+                    </select>
               </div>
 
               <a href="{{ route('admin.doctors.index')}}" class="btn btn-link">Cancel</a>
-              <button typre="submit" class="btn btn-primary float-right">Submit</button>
+              <button type="submit" class="btn btn-primary float-right">Submit</button>
             </form>
           </div>
         </div>

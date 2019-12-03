@@ -30,15 +30,7 @@
                             <label for="title">Email</label>
                             <input type="text" class="form-control" id="email" name="email" value="{{old("email", $doctor->user->email)}}" />
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="title">Publisher</label>
-                            <select name="publisher_id">
-                              @foreach ($publishers as $publisher)
-                                <option value="{{$publisher->id}}" {{(old('publisher_id', $book->publisher->id) == $publisher->id) ? "selected" : ""}}>
-                                  {{$publisher->name}}
-                                </option>
-                              @endforeach
-                        </div> --}}
+
                         <div class="form-group">
                             <label for="title">Start Date</label>
                             <input type="date" class="form-control" id="start_date" name="start_date" value="{{old("start_date", $doctor->start_date)}}" />
