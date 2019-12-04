@@ -51,7 +51,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    Patients
+                    Patients Registered to : {{$insurance_company->name}}
                 </div>
                 <div class="card-body">
                     @if(count($patients) == 0)
@@ -69,11 +69,7 @@
                                 <td>{{ $patient->policy_number }}</td>
                                 <td>
                                    <a href="{{ route('admin.patients.show', $patient->id) }}" class="btn btn-default ">View</a>
-                                    {{-- <form style="display:inline-block" method="POST" action="{{ route('admin.patients.destroy', ['id' => $patient->id,'rid'=> $patient->id]) }}">
-                                      <input type="hidden" name="_method" value="DELETE">
-                                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                      <button type="submit" class="form-control btn btn-danger ">Delete</a>
-                                    </form> --}}
+                              
                                 </td>
                             </tr>
                             @endforeach

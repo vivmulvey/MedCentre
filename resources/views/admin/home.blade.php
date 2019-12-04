@@ -14,9 +14,32 @@
                         </div>
                     @endif
 
-                    You are logged in as an admin!
+                    <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{Auth::user()->name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ Auth::user()->email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>{{Auth::user()->address }}</td>
+                        </tr>
+                        <tr>
+                            <td>Post Code</td>
+                            <td>{{Auth::user()->post_code }}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>{{Auth::user()->phone_number }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-              
+
                 </div>
             </div>
         </div>
