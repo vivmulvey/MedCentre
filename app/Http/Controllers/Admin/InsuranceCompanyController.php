@@ -33,7 +33,7 @@ class InsuranceCompanyController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.insurance_companies.create');
     }
 
     /**
@@ -44,7 +44,28 @@ class InsuranceCompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate(
+      [
+        'name' => 'required|max:191',
+        'address' => 'required|max:191',
+        'post_code' => 'required|max:13',
+        'phone_number' => 'required|max:13',
+        'email' => 'required|max:191'
+
+
+
+      ]);
+
+      $insurance_company = new InsuranceCompany();
+      $insurance_company->name = $request->input('name');
+      $insurance_company->address = $request->input('address');
+      $insurance_company->post_code = $request->input('post_code');
+      $insurance_company->phone_number = $request->input('phone_number');
+      $insurance_company->email = $request->input('email');
+      $insurance_company->save();
+
+        return redirect()->route('admin.insurance_companies.index');
+
     }
 
     /**
@@ -75,7 +96,13 @@ class InsuranceCompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+      $insurance_company = InsuranceCompany::findOrFail($id);
+
+
+      return view('admin.insurance_companies.edit')->with([
+        'insurance_company' => $insurance_company,
+
+      ]);
     }
 
     /**
@@ -87,7 +114,34 @@ class InsuranceCompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+      $insurance_company = InsuranceCompany::findOrFail($id);
+
+
+
+      $request->validate(
+
+      [
+        'name' => 'required|max:191',
+        'address' => 'required|max:191',
+        'post_code' => 'required|max:13',
+        'phone_number' => 'required|max:13',
+        'email' => 'required|max:191',
+
+
+      ]);
+
+      $insurance_company->name = $request->input('name');
+      $insurance_company->address = $request->input('address');
+      $insurance_company->post_code = $request->input('post_code');
+      $insurance_company->phone_number = $request->input('phone_number');
+      $insurance_company->email = $request->input('email');
+      $insurance_company->save();
+
+
+      $insurance_company->save();
+
+      return redirect()->route('admin.insurance_companies.index');
     }
 
     /**
