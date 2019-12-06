@@ -24,7 +24,7 @@ class VisitController extends Controller
     public function index()
     {
       $user = Auth::user();
-      // $visits = Visit::all(); //get all books from database and put it in $books
+
       $visits = Visit::where('patient_id',$user->patient->id)->get();
 
       return view('patient.visits.index')->with([

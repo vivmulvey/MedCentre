@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
                     Visits
@@ -45,7 +45,7 @@
 
 
                                 <td>
-                                    <a href="{{ route('patient.visits.show', $visit->id) }}" class="btn btn-primary ">View</a>
+                                    <a href="{{ route('patient.visits.show', $visit->id) }}" class="btn btn-outline-primary ">View</a>
 
                                     {{-- <form style="display:inline-block" method="POST" action="{{route('patient.visits.destroy', $visit->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">

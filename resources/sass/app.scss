@@ -1,8 +1,38 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.card{
+  margin-bottom: 10px;
+}
+
+.card-header{
+  font-size: 1.0rem;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: 'black';
+  text-align: left;
+  background-color: #ffffff;
+}
+
+.card-body{
+  background-color:#f9f9f9;
+}
+
+.card-header{
+  background-color:#C2DFFF;
+  font-weight: 600;
+  color: 'black';
+}

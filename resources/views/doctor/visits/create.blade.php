@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
                     Add New Visit
@@ -57,9 +57,9 @@
                                 @endforeach
                             </select>
                         </div>
-                      
+
                         <a href="{{ route('doctor.visits.index')}}" class="btn btn-link">Cancel</a>
-                        <button typre="submit" class="btn btn-primary float-right">Submit</button>
+                        <button typre="submit" class="btn btn-outline-success float-right">Submit</button>
                     </form>
                 </div>
             </div>

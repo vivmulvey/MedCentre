@@ -84,7 +84,7 @@
                     Medical Centre
                 </div>
                 <div>
-                  <h2>Login or Register to continue</h2>
+
                 </div>
 
 

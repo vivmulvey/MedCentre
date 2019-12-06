@@ -19,8 +19,7 @@ class InsuranceCompanyController extends Controller
     public function index()
     {
       $user = Auth::user();
-      // $insurance_company = InsuranceCompany::findOrFail($patient->insurance_company->id);
-      // $insurance_company = InsuranceCompany::where('patient_id',$user->patient->id)->get();
+
       $patient = $user->patient;
       $insurance_company = InsuranceCompany::findOrFail($patient->insurance_company_id);
 

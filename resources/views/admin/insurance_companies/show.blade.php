@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
                     Insurance Company: {{$insurance_company->name}}
@@ -39,11 +39,11 @@
                         </tbody>
                     </table>
                     <a href="{{ route('admin.insurance_companies.index') }}" class="btn btn-default ">Back</a>
-                    <a href="{{ route('admin.insurance_companies.edit', $insurance_company->id) }}" class="btn btn-warning ">Edit</a>
+                    <a href="{{ route('admin.insurance_companies.edit', $insurance_company->id) }}" class="btn btn-outline-secondary ">Edit</a>
                     <form style="display:inline-block" method="POST" action="{{route('admin.insurance_companies.destroy', $insurance_company->id)}}">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="form-control btn btn-danger ">Delete</a>
+                        <button type="submit" class="form-control btn btn-outline-danger ">Delete</a>
                     </form>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                                 <td>{{ $patient->policy_number }}</td>
                                 <td>
                                    <a href="{{ route('admin.patients.show', $patient->id) }}" class="btn btn-default ">View</a>
-                              
+
                                 </td>
                             </tr>
                             @endforeach

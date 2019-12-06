@@ -157,6 +157,9 @@ class DoctorController extends Controller
     [
       'name' => 'required|max:191',
       'email' => 'required|max:191',
+      'address' => 'required|max:191',
+      'post_code' => 'required|max:13',
+      'phone_number' => 'required|max:13',
       'start_date' => 'required|date|max:10',
       'expertise' => 'required|max:191',
 
@@ -165,6 +168,9 @@ class DoctorController extends Controller
 
     $user->name = $request->input('name');
     $user->email = $request->input('email');
+    $user->address = $request->input('address');
+    $user->post_code = $request->input('post_code');
+    $user->phone_number = $request->input('phone_number');
     $user->save();
     $doctor->start_date = $request->input('start_date');
     $doctor->expertise = $request->input('expertise');

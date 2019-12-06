@@ -4,7 +4,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-12 col-md-offset-2">
         <div class="card">
           <div class="card-header">
             Add New Doctor
@@ -61,7 +61,7 @@
               </div>
 
               <a href="{{ route('admin.doctors.index')}}" class="btn btn-link">Cancel</a>
-              <button type="submit" class="btn btn-primary float-right">Submit</button>
+              <button type="submit" class="btn btn-outline-success float-right">Submit</button>
             </form>
           </div>
         </div>

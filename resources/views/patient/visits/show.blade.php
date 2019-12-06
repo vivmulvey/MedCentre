@@ -15,27 +15,27 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <td>Date</td>
+                                <th>Date</th>
                                 <td>{{ $visit->date }}</td>
                             </tr>
                             <tr>
-                                <td>Time</td>
+                                <th>Time</th>
                                 <td>{{$visit->time}}</td>
                             </tr>
                             <tr>
-                                <td>Cost</td>
+                                <th>Cost</th>
                                 <td>{{ $visit->cost }}</td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <th>Duration</th>
                                 <td>{{ $visit->duration }}</td>
                             </tr>
                             <tr>
-                                <td>Doctor Name</td>
+                                <th>Doctor Name</th>
                                 <td>{{ $visit->doctor->user->name }}</td>
                             </tr>
                             <tr>
-                                <td>Patient Name</td>
+                                <th>Patient Name</th>
                                 <td>{{ $visit->patient->user->name }}</td>
                             </tr>
 

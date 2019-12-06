@@ -3,6 +3,25 @@
 
 <head>
     <meta charset="utf-8">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet"> --}}
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -10,15 +29,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -36,18 +53,19 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if(Auth::user() && Auth::user()->hasRole('admin'))
-                          <a href="{{ route('admin.home')}}" class="btn btn-default float-right">Home</a>
-                          <a href="{{ route('admin.doctors.index')}}" class="btn btn-default float-right">Doctors</a>
-                          <a href="{{ route('admin.patients.index')}}" class="btn btn-default float-right">Patients</a>
-                          <a href="{{ route('admin.visits.index')}}" class="btn btn-default float-right">Visits</a>
-                          <a href="{{ route('admin.insurance_companies.index')}}" class="btn btn-default float-right">Insurance Companies</a>
+                        <a href="{{ route('admin.home')}}" class="btn btn-default float-right">Home</a>
+                        <a href="{{ route('admin.doctors.index')}}" class="btn btn-default float-right">Doctors</a>
+                        <a href="{{ route('admin.patients.index')}}" class="btn btn-default float-right">Patients</a>
+                        <a href="{{ route('admin.visits.index')}}" class="btn btn-default float-right">Visits</a>
+                        <a href="{{ route('admin.insurance_companies.index')}}" class="btn btn-default float-right">Insurance Companies</a>
                         @elseif(Auth::user() && Auth::user()->hasRole('doctor'))
-                          <a href="{{ route('doctor.home')}}" class="btn btn-default float-right">Home</a>
-                          <a href="{{ route('doctor.visits.index')}}" class="btn btn-default float-right">View Visits</a>
+                        <a href="{{ route('doctor.home')}}" class="btn btn-default float-right">Home</a>
+                        <a href="{{ route('doctor.patients.index')}}" class="btn btn-default float-right">Patients</a>
+                        <a href="{{ route('doctor.visits.index')}}" class="btn btn-default float-right">View Visits</a>
                         @elseif(Auth::user() && Auth::user()->hasRole('patient'))
-                          <a href="{{ route('patient.home')}}" class="btn btn-default float-right">Home</a>
-                          <a href="{{ route('patient.visits.index')}}" class="btn btn-default float-right">View Visits</a>
-                          <a href="{{ route('patient.insurance_company.index')}}" class="btn btn-default float-right">Insurance Company</a>
+                        <a href="{{ route('patient.home')}}" class="btn btn-default float-right">Home</a>
+                        <a href="{{ route('patient.visits.index')}}" class="btn btn-default float-right">View Visits</a>
+                        <a href="{{ route('patient.insurance_company.index')}}" class="btn btn-default float-right">Insurance Company</a>
                         @endif
 
                     </ul>
@@ -65,13 +83,8 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                My Account <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -79,7 +92,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div>
+
                         </li>
                         @endguest
                     </ul>
@@ -92,5 +105,6 @@
         </main>
     </div>
 </body>
+
 
 </html>

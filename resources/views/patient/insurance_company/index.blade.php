@@ -16,7 +16,7 @@
                     @else --}}
                     <table id="table-insurance_companies" class="table table-hover">
                         <thead>
-                      
+
                        </thead>
                         <tbody>
 
@@ -27,19 +27,19 @@
                                       <td>{{ $insurance_company->name }}</td>
                                   </tr> --}}
                                   <tr>
-                                      <td>Email</td>
+                                      <th>Email</th>
                                       <td>{{$insurance_company->email }}</td>
                                   </tr>
                                   <tr>
-                                      <td>Address</td>
+                                      <th>Address</th>
                                       <td>{{ $insurance_company->address }}</td>
                                   </tr>
                                   <tr>
-                                      <td>Post Code</td>
+                                      <th>Post Code</th>
                                       <td>{{$insurance_company->post_code }}</td>
                                   </tr>
                                   <tr>
-                                      <td>Phone Number</td>
+                                      <th>Phone Number</th>
                                       <td>{{$insurance_company->phone_number }}</td>
                                   </tr>
 

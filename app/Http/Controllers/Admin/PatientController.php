@@ -153,6 +153,9 @@ class PatientController extends Controller
     [
       'name' => 'required|max:191',
       'email' => 'required|max:191',
+      'address' => 'required|max:191',
+      'post_code' => 'required|max:13',
+      'phone_number' => 'required|max:13',
       'insurance_company_id' => 'required|max:191',
       'policy_number' => 'required|max:13',
 
@@ -161,6 +164,9 @@ class PatientController extends Controller
 
     $user->name = $request->input('name');
     $user->email = $request->input('email');
+    $user->address = $request->input('address');
+    $user->post_code = $request->input('post_code');
+    $user->phone_number = $request->input('phone_number');
     $user->save();
     $patient->insurance_company_id = $request->input('insurance_company_id');
     $patient->policy_number = $request->input('policy_number');

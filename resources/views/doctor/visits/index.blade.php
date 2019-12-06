@@ -4,11 +4,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
                     Visits
-                     <a href="{{ route('doctor.visits.create')}}" class="btn btn-primary float-right">Add</a>
+                     <a href="{{ route('doctor.visits.create')}}" class="btn btn-secondary float-right">Add</a>
                 </div>
                 <div class="card-body">
                     @if (count($visits) === 0)
@@ -46,7 +46,7 @@
 
 
                                 <td>
-                                    <a href="{{ route('doctor.visits.show', $visit->id) }}" class="btn btn-primary ">View</a>
+                                    <a href="{{ route('doctor.visits.show', $visit->id) }}" class="btn btn-outline-primary ">View</a>
                                     {{-- <a href="{{ route('doctor.visits.edit', $visit->id) }}" class="btn btn-warning ">Edit</a> --}}
                                     {{-- <form style="display:inline-block" method="POST" action="{{route('doctor.visits.destroy', $visit->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">

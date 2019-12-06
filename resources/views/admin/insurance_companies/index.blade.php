@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     Insurance Companies
-                    <a href="{{ route('admin.insurance_companies.create')}}" class="btn btn-primary float-right">Add</a>
+                    <a href="{{ route('admin.insurance_companies.create')}}" class="btn btn-secondary float-right">Add</a>
                 </div>
                 <div class="card-body">
                     @if (count($insurance_companies) === 0)
@@ -20,7 +20,7 @@
                             <th>Name</th>
                             <th>Email</th>
                         </thead>
-                        
+
                         <tbody>
 
 
@@ -37,7 +37,7 @@
 
 
                                 <td>
-                                    <a href="{{ route('admin.insurance_companies.show', $insurance_company->id) }}" class="btn btn-default ">View</a>
+                                    <a href="{{ route('admin.insurance_companies.show', $insurance_company->id) }}" class="btn btn-outline-primary ">View</a>
                                     {{-- <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="btn btn-warning ">Edit</a>
                                     <form style="display:inline-block" method="POST" action="{{route('admin.doctors.destroy', $doctor->user->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">

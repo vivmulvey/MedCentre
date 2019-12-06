@@ -4,11 +4,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
                     Visits
-                    <a href="{{ route('admin.visits.create')}}" class="btn btn-primary float-right">Add</a>
+                    <a href="{{ route('admin.visits.create')}}" class="btn btn-secondary float-right">Add</a>
                 </div>
                 <div class="card-body">
                     @if (count($visits) === 0)
@@ -43,9 +43,9 @@
                               </td>
 
                                 <td>
-                                    <a href="{{ route('admin.visits.show', $visit->id) }}" class="btn btn-default ">View</a>
+                                    <a href="{{ route('admin.visits.show', $visit->id) }}" class="btn btn-outline-primary ">View</a>
                                     {{-- <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning ">Edit</a> --}}
-                              
+
                                     {{-- <form style="display:inline-block" method="POST" action="{{route('admin.visits.destroy', $visit->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
